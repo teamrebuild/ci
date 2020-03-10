@@ -13,7 +13,7 @@ DOCKER_REPO="teamrebuild"
 DOCKER_IMAGE="ci"
 DOCKER_TAG="latest"
 DOCKER_CI=`mktemp -d`
-#trap 'rm -rf $DOCKER_CI' EXIT
+trap 'rm -rf $DOCKER_CI' EXIT
 
 echo "Building CI Docker image from $MAYASTOR into $DOCKER_CI"
 
