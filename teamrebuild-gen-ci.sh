@@ -16,6 +16,7 @@ DOCKER_CI=`mktemp -d`
 trap 'rm -rf $DOCKER_CI' EXIT
 
 echo "Building CI Docker image from $MAYASTOR into $DOCKER_CI"
+pushd $MAYASTOR
 
 # js tests modules that need to be prebuilt
 mkdir -p $DOCKER_CI/mayastor-test
@@ -54,3 +55,4 @@ sudo docker build -t $DOCKER_REPO/$DOCKER_IMAGE:$DOCKER_TAG ./
 sudo docker push $DOCKER_REPO/$DOCKER_IMAGE:$DOCKER_TAG
 
 echo "Docker image pushed to: $DOCKER_REPO/$DOCKER_IMAGE:$DOCKER_TAG"
+popd
